@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Computing: The Basics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-style: normal;
+        }
+        em, i {
+            font-style: normal;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-white text-neutral-900 antialiased selection:bg-neutral-100 selection:text-neutral-900">
+
+    <header class="min-h-screen flex flex-col justify-between px-8 md:px-20 py-16">
+        <div class="flex justify-between items-center text-xs tracking-widest text-neutral-400 uppercase">
+            <span>Introduction</span>
+            <span>Quantum Mechanics</span>
+        </div>
+        <div class="max-w-5xl my-auto py-20 reveal">
+            <h1 class="text-6xl md:text-9xl font-extralight tracking-tighter leading-none mb-10 text-neutral-900">
+                Quantum Computing
+            </h1>
+            <p class="text-lg md:text-2xl font-light text-neutral-500 max-w-2xl leading-relaxed">
+                A new approach to computation that uses principles of quantum mechanics to solve certain types of problems in ways that ordinary computers cannot easily match.
+            </p>
+        </div>
+        <div class="text-xs tracking-widest text-neutral-400">
+            Scroll to explore
+        </div>
+    </header>
+
+    <section class="px-8 md:px-20 py-32">
+        <div class="max-w-5xl mx-auto reveal">
+            <span class="text-xs uppercase tracking-widest text-neutral-400 block mb-4">01 / Architecture</span>
+            <h2 class="text-4xl md:text-6xl font-extralight tracking-tight mb-16 text-neutral-900">
+                Classical computers vs quantum computers
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-light text-neutral-800">Classical computer</h3>
+                    <p class="text-sm font-light text-neutral-500 tracking-wide uppercase">Uses bits</p>
+                    <p class="text-neutral-600 font-light leading-relaxed text-lg">
+                        Each bit has a definite value: 0 or 1. Your laptop, smartphone, and servers rely on classical computing architecture.
+                    </p>
+                </div>
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-light text-neutral-800">Quantum computer</h3>
+                    <p class="text-sm font-light text-neutral-500 tracking-wide uppercase">Uses qubits</p>
+                    <p class="text-neutral-600 font-light leading-relaxed text-lg">
+                        A qubit can be in a superposition of 0 and 1 until measured, with measurement probabilities determined by its quantum state.
+                    </p>
+                    <p class="text-xs text-neutral-400 leading-normal pt-4">
+                        Important: a qubit is not simply a bit that stores both answers in the ordinary sense. Quantum states follow different mathematical rules, and measurement produces a classical result.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-8 md:px-20 py-32">
+        <div class="max-w-5xl mx-auto reveal">
+            <span class="text-xs uppercase tracking-widest text-neutral-400 block mb-4">02 / Principles</span>
+            <h2 class="text-4xl md:text-6xl font-extralight tracking-tight mb-24 text-neutral-900">
+                The three fundamental concepts
+            </h2>
+
+            <!-- Concept A -->
+            <div class="mb-28">
+                <h3 class="text-3xl font-light mb-6 text-neutral-900">A. Superposition</h3>
+                <p class="text-lg text-neutral-600 font-light mb-8 max-w-3xl leading-relaxed">
+                    A classical bit is either 0 or 1. A qubit can exist in a combination of both possible states simultaneously.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 py-8">
+                    <div>
+                        <span class="text-xs text-neutral-400 uppercase tracking-wider block mb-2">Classical bit</span>
+                        <span class="text-4xl font-extralight text-neutral-800">0 or 1</span>
+                    </div>
+                    <div>
+                        <span class="text-xs text-neutral-400 uppercase tracking-wider block mb-2">Qubit state</span>
+                        <span class="text-4xl font-extralight text-neutral-800">a|0> + b|1></span>
+                    </div>
+                </div>
+                <div class="mt-8 text-sm text-neutral-500 font-light leading-relaxed">
+                    Here, a and b are probability amplitudes satisfying <span class="font-normal text-neutral-800">|a|^2 + |b|^2 = 1</span>. When measured, the qubit returns 0 with probability <span class="font-normal text-neutral-800">|a|^2</span>, or 1 with probability <span class="font-normal text-neutral-800">|b|^2</span>. Quantum algorithms manipulate these superpositions to influence output probabilities.
+                </div>
+            </div>
+
+            <!-- Concept B -->
+            <div class="mb-28">
+                <h3 class="text-3xl font-light mb-6 text-neutral-900">B. Entanglement</h3>
+                <p class="text-lg text-neutral-600 font-light mb-8 max-w-3xl leading-relaxed">
+                    Entanglement is a special quantum relationship between two or more particles or qubits. When qubits are entangled, their joint quantum state cannot be fully described as independent states of each qubit.
+                </p>
+                <div class="py-6 px-8 text-neutral-800 font-mono text-sm mb-6">
+                    State representation: (|00> + |11>) / sqrt(2)
+                </div>
+                <p class="text-sm text-neutral-500 font-light leading-relaxed">
+                    When measured in the same basis, their results match: either 00 or 11. This does not allow faster-than-light communication, but gives quantum computers correlations classical systems cannot reproduce.
+                </p>
+            </div>
+
+            <!-- Concept C -->
+            <div>
+                <h3 class="text-3xl font-light mb-6 text-neutral-900">C. Quantum interference</h3>
+                <p class="text-lg text-neutral-600 font-light mb-6 max-w-3xl leading-relaxed">
+                    Quantum states have probability amplitudes that can reinforce or cancel one another.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-neutral-600 font-light">
+                    <div>
+                        <strong class="font-medium text-neutral-900 block mb-2">Constructive interference</strong>
+                        Increases the probability of certain desirable outcomes during computation.
+                    </div>
+                    <div>
+                        <strong class="font-medium text-neutral-900 block mb-2">Destructive interference</strong>
+                        Decreases the probability of incorrect or unwanted outcomes.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-8 md:px-20 py-32">
+        <div class="max-w-5xl mx-auto reveal">
+            <span class="text-xs uppercase tracking-widest text-neutral-400 block mb-4">03 / Execution</span>
+            <h2 class="text-4xl md:text-6xl font-extralight tracking-tight mb-20 text-neutral-900">
+                How does a quantum computer work?
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="space-y-4">
+                    <span class="text-xs font-mono text-neutral-400">01</span>
+                    <h3 class="text-xl font-light text-neutral-900">Initialize qubits</h3>
+                    <p class="text-sm text-neutral-500 font-light leading-relaxed">Prepare the starting quantum state prior to computation.</p>
+                </div>
+                <div class="space-y-4">
+                    <span class="text-xs font-mono text-neutral-400">02</span>
+                    <h3 class="text-xl font-light text-neutral-900">Apply quantum gates</h3>
+                    <p class="text-sm text-neutral-500 font-light leading-relaxed">Transform the qubits using controlled logical operations.</p>
+                </div>
+                <div class="space-y-4">
+                    <span class="text-xs font-mono text-neutral-400">03</span>
+                    <h3 class="text-xl font-light text-neutral-900">Interference & Entanglement</h3>
+                    <p class="text-sm text-neutral-500 font-light leading-relaxed">Shape the probabilities of potential final outcomes.</p>
+                </div>
+                <div class="space-y-4">
+                    <span class="text-xs font-mono text-neutral-400">04</span>
+                    <h3 class="text-xl font-light text-neutral-900">Measure qubits</h3>
+                    <p class="text-sm text-neutral-500 font-light leading-relaxed">Obtain classical results through repeated computations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-8 md:px-20 py-32">
+        <div class="max-w-5xl mx-auto reveal">
+            <span class="text-xs uppercase tracking-widest text-neutral-400 block mb-4">04 / Operations</span>
+            <h2 class="text-4xl md:text-6xl font-extralight tracking-tight mb-16 text-neutral-900">
+                What are quantum gates?
+            </h2>
+            <p class="text-lg text-neutral-600 font-light mb-16 max-w-3xl leading-relaxed">
+                Quantum gates are operations that change quantum states, playing a role similar to logic gates in classical computing.
+            </p>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm font-light">
+                    <thead>
+                        <tr class="text-xs text-neutral-400 tracking-wider uppercase">
+                            <th class="py-4 font-light">Gate</th>
+                            <th class="py-4 font-light">Basic function</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-neutral-100 text-neutral-700">
+                        <tr>
+                            <td class="py-6 font-medium text-neutral-900">X gate</td>
+                            <td class="py-6">Flips |0> to |1>, and vice versa.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-6 font-medium text-neutral-900">H gate (Hadamard)</td>
+                            <td class="py-6">Creates an equal superposition from |0>.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-6 font-medium text-neutral-900">Z gate</td>
+                            <td class="py-6">Changes the phase of the |1> component.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-6 font-medium text-neutral-900">CNOT gate</td>
+                            <td class="py-6">Flips a target qubit depending on a control qubit.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-8 md:px-20 py-32">
+        <div class="max-w-5xl mx-auto reveal">
+            <span class="text-xs uppercase tracking-widest text-neutral-400 block mb-4">05 / Impact</span>
+            <h2 class="text-4xl md:text-6xl font-extralight tracking-tight mb-20 text-neutral-900">
+                Why are quantum computers important?
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-light text-neutral-900">Drug discovery</h3>
+                    <p class="text-neutral-500 font-light leading-relaxed">
+                        Simulate complex molecular and chemical systems, potentially accelerating discoveries in pharmacology and material science.
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-light text-neutral-900">Cryptography</h3>
+                    <p class="text-neutral-500 font-light leading-relaxed">
+                        Shor algorithm can efficiently factor large integers on fault-tolerant hardware, threatening current RSA encryption standards.
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-light text-neutral-900">Materials science</h3>
+                    <p class="text-neutral-500 font-light leading-relaxed">
+                        Investigate superconductors, high-capacity batteries, advanced catalysts, and novel complex materials.
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-light text-neutral-900">Optimization</h3>
+                    <p class="text-neutral-500 font-light leading-relaxed">
+                        Offer theoretical advantages for complex search and logistics optimization problems across multiple industries.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-8 md:px-20 py-32">
+        <div class="max-w-5xl mx-auto reveal">
+            <span class="text-xs uppercase tracking-widest text-neutral-400 block mb-4">06 / Scale</span>
+            <h2 class="text-4xl md:text-6xl font-extralight tracking-tight mb-12 text-neutral-900">
+                Possibilities represented by qubits
+            </h2>
+            <p class="text-lg text-neutral-600 font-light mb-16 max-w-3xl leading-relaxed">
+                A system of <span class="font-normal text-neutral-900">n</span> qubits has a quantum state described by <span class="font-normal text-neutral-900">2^n</span> complex amplitudes.
+            </p>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm font-light">
+                    <thead>
+                        <tr class="text-xs text-neutral-400 tracking-wider uppercase">
+                            <th class="py-4 font-light">Qubits (n)</th>
+                            <th class="py-4 font-light">Basis states represented (2^n)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-neutral-100 text-neutral-700">
+                        <tr>
+                            <td class="py-5 font-mono">1</td>
+                            <td class="py-5 font-mono">2</td>
+                        </tr>
+                        <tr>
+                            <td class="py-5 font-mono">10</td>
+                            <td class="py-5 font-mono">1,024</td>
+                        </tr>
+                        <tr>
+                            <td class="py-5 font-mono">20</td>
+                            <td class="py-5 font-mono">1,048,576</td>
+                        </tr>
+                        <tr>
+                            <td class="py-5 font-mono">50</td>
+                            <td class="py-5 font-mono">1.13 x 10^15</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-8 md:px-20 py-32">
+        <div class="max-w-5xl mx-auto reveal">
+            <span class="text-xs uppercase tracking-widest text-neutral-400 block mb-4">07 / Convergence</span>
+            <h2 class="text-4xl md:text-6xl font-extralight tracking-tight mb-12 text-neutral-900">
+                How quantum computing can merge with biotech
+            </h2>
+            <p class="text-lg text-neutral-600 font-light mb-16 max-w-3xl leading-relaxed">
+                Biological systems operate at the molecular and atomic scale, where quantum mechanical effects govern interactions such as electron tunneling, molecular bonding, and energy transfer. Merging quantum computing with biotechnology bridges theoretical physics and living systems.
+            </p>
+
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-2xl font-light text-neutral-900 mb-4">Molecular modeling</h3>
+                    <p class="text-neutral-500 font-light leading-relaxed">
+                        Classical computers struggle to simulate complex molecular structures because the quantum states of electrons grow exponentially with system size. Quantum algorithms natively compute molecular orbitals and energy states with absolute precision.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-light text-neutral-900 mb-4">Protein folding precision</h3>
+                    <p class="text-neutral-500 font-light leading-relaxed">
+                        Proteins fold into intricate three-dimensional shapes driven by quantum forces. Quantum systems can evaluate countless folding conformations simultaneously through superposition, uncovering precise structures behind diseases.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-light text-neutral-900 mb-4">Enzyme optimization</h3>
+                    <p class="text-neutral-500 font-light leading-relaxed">
+                        Designing synthetic enzymes for carbon capture or targeted therapeutics requires analyzing transition states that classical systems approximate poorly. Quantum computation calculates catalytic mechanisms at atomic fidelity.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-8 md:px-20 py-32">
+        <div class="max-w-5xl mx-auto reveal">
+            <span class="text-xs uppercase tracking-widest text-neutral-400 block mb-4">08 / Frontiers</span>
+            <h2 class="text-4xl md:text-6xl font-extralight tracking-tight mb-12 text-neutral-900">
+                How far can biotech go with quantum computing
+            </h2>
+            <p class="text-lg text-neutral-600 font-light mb-16 max-w-3xl leading-relaxed">
+                The integration of quantum mechanics into biological research opens horizons previously constrained by computational limits, transitioning biology from empirical trial-and-error to exact quantum prediction.
+            </p>
+
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-2xl font-light text-neutral-900 mb-4">Biological complexity at scale</h3>
+                    <p class="text-neutral-500 font-light leading-relaxed">
+                        Future biotechnology can model entire cellular networks, accounting for multi-protein interactions and genomic feedback loops concurrently rather than isolated components.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-light text-neutral-900 mb-4">Accelerated drug development cycles</h3>
+                    <p class="text-neutral-500 font-light leading-relaxed">
+                        By replacing years of laboratory screening with exact quantum simulations, pharmaceutical design timelines can shrink from decades to days, predicting toxicity and efficacy before synthesis.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-light text-neutral-900 mb-4">True personalized medicine</h3>
+                    <p class="text-neutral-500 font-light leading-relaxed">
+                        Quantum biotech will enable real-time simulation of individual patient genetic profiles against bespoke molecular therapies, completely eliminating adverse drug reactions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-8 md:px-20 py-32">
+        <div class="max-w-5xl mx-auto reveal">
+            <span class="text-xs uppercase tracking-widest text-neutral-400 block mb-4">09 / Achievement</span>
+            <h2 class="text-4xl md:text-6xl font-extralight tracking-tight mb-12 text-neutral-900">
+                How far can a quantum-bio system achieve
+            </h2>
+            <p class="text-lg text-neutral-600 font-light mb-16 max-w-3xl leading-relaxed">
+                When quantum systems synchronize with biological principles, humanity unlocks capabilities that transcend traditional biological limitations.
+            </p>
+
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-2xl font-light text-neutral-900 mb-4">Photosynthetic quantum coherence</h3>
+                    <p class="text-neutral-500 font-light leading-relaxed">
+                        Natural photosynthesis exploits quantum coherence to transfer energy with near-100 percent efficiency. Replicating this in synthetic systems can yield revolutionary solar energy conversion technologies.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-light text-neutral-900 mb-4">Synthetic biology breakthroughs</h3>
+                    <p class="text-neutral-500 font-light leading-relaxed">
+                        Engineered organisms programmed at the quantum level to synthesize complex biopolymers, clean toxic industrial waste, or produce carbon-neutral fuels with unprecedented efficiency.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-light text-neutral-900 mb-4">Absolute binding affinity prediction</h3>
+                    <p class="text-neutral-500 font-light leading-relaxed">
+                        Achieving absolute accuracy in predicting ligand-receptor binding affinity, solving age-old biochemical bottlenecks in neurodegenerative disease treatments and oncology.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-8 md:px-20 py-32">
+        <div class="max-w-5xl mx-auto reveal">
+            <span class="text-xs uppercase tracking-widest text-neutral-400 block mb-4">10 / Simulation</span>
+            <h2 class="text-4xl md:text-6xl font-extralight tracking-tight mb-8 text-neutral-900">
+                A tiny quantum experiment
+            </h2>
+            <p class="text-neutral-600 font-light mb-12 max-w-2xl">
+                Simulate a one-qubit experiment starting from state <span class="font-normal text-neutral-900">|0></span>. Choose your gate and shots to observe measurement outcomes.
+            </p>
+
+            <div class="space-y-8">
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-neutral-400 mb-3">Choose a Gate</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <button onclick="setGate('H')" id="btn-H" class="gate-btn py-4 px-6 border border-neutral-900 text-neutral-900 text-sm font-light tracking-wide transition-all bg-neutral-900 text-white">Hadamard (H)</button>
+                        <button onclick="setGate('X')" id="btn-X" class="gate-btn py-4 px-6 border border-neutral-200 text-neutral-700 text-sm font-light tracking-wide transition-all hover:border-neutral-900">X Gate</button>
+                        <button onclick="setGate('I')" id="btn-I" class="gate-btn py-4 px-6 border border-neutral-200 text-neutral-700 text-sm font-light tracking-wide transition-all hover:border-neutral-900">No Gate</button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-neutral-400 mb-3">Shots (Number of measurements)</label>
+                    <div class="grid grid-cols-3 gap-4">
+                        <button onclick="setShots(100)" id="shot-100" class="shot-btn py-3 px-4 border border-neutral-900 text-neutral-900 text-sm font-light bg-neutral-900 text-white">100</button>
+                        <button onclick="setShots(500)" id="shot-500" class="shot-btn py-3 px-4 border border-neutral-200 text-neutral-700 text-sm font-light">500</button>
+                        <button onclick="setShots(1000)" id="shot-1000" class="shot-btn py-3 px-4 border border-neutral-200 text-neutral-700 text-sm font-light">1,000</button>
+                    </div>
+                </div>
+
+                <div class="pt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+                    <div>
+                        <span class="text-xs uppercase tracking-wider text-neutral-400 block mb-1">Estimated Probabilities</span>
+                        <div id="prob-output" class="text-xl font-light text-neutral-900">|0>: 50% | |1>: 50%</div>
+                    </div>
+                    <button onclick="runExperiment()" class="w-full sm:w-auto px-8 py-4 bg-neutral-900 text-white text-sm font-light tracking-wider hover:bg-neutral-800 transition-colors">
+                        Run Circuit
+                    </button>
+                </div>
+
+                <div id="results-display" class="hidden pt-6">
+                    <span class="text-xs uppercase tracking-wider text-neutral-400 block mb-3">Measurement Counts</span>
+                    <div class="grid grid-cols-2 gap-4 text-sm font-light">
+                        <div class="p-4">
+                            Result '0': <span id="count-0" class="font-medium text-neutral-900">0</span>
+                        </div>
+                        <div class="p-4">
+                            Result '1': <span id="count-1" class="font-medium text-neutral-900">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="px-8 md:px-20 py-20 flex flex-col md:flex-row justify-between items-start md:items-center text-xs text-neutral-400 gap-6">
+        <div>
+            <p class="text-neutral-900 font-medium tracking-wide">SHADMAN SHAKIB</p>
+            <p class="font-mono mt-1">ID: 22136032</p>
+            <p class="mt-1">Department of Biotechnology</p>
+        </div>
+        <div class="space-y-1">
+            <p>shadman.shakib1@g.bracu.ac.bd</p>
+            <p>shadman.shakiblxl@gmail.com</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                threshold: 0.1
+            };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        let currentGate = 'H';
+        let currentShots = 100;
+
+        function setGate(gate) {
+            currentGate = gate;
+            document.querySelectorAll('.gate-btn').forEach(btn => {
+                btn.classList.remove('bg-neutral-900', 'text-white', 'border-neutral-900');
+                btn.classList.add('border-neutral-200', 'text-neutral-700');
+            });
+            const activeBtn = document.getElementById('btn-' + gate);
+            activeBtn.classList.remove('border-neutral-200', 'text-neutral-700');
+            activeBtn.classList.add('bg-neutral-900', 'text-white', 'border-neutral-900');
+
+            updateProbabilities();
+        }
+
+        function setShots(shots) {
+            currentShots = shots;
+            document.querySelectorAll('.shot-btn').forEach(btn => {
+                btn.classList.remove('bg-neutral-900', 'text-white', 'border-neutral-900');
+                btn.classList.add('border-neutral-200', 'text-neutral-700');
+            });
+            const activeBtn = document.getElementById('shot-' + shots);
+            activeBtn.classList.remove('border-neutral-200', 'text-neutral-700');
+            activeBtn.classList.add('bg-neutral-900', 'text-white', 'border-neutral-900');
+        }
+
+        function updateProbabilities() {
+            const probOutput = document.getElementById('prob-output');
+            if (currentGate === 'H') {
+                probOutput.textContent = "|0>: 50% | |1>: 50%";
+            } else if (currentGate === 'X') {
+                probOutput.textContent = "|0>: 0% | |1>: 100%";
+            } else {
+                probOutput.textContent = "|0>: 100% | |1>: 0%";
+            }
+        }
+
+        function runExperiment() {
+            let p0 = 0.5;
+            if (currentGate === 'X') p0 = 0.0;
+            if (currentGate === 'I') p0 = 1.0;
+
+            let count0 = 0;
+            for (let i = 0; i < currentShots; i++) {
+                if (Math.random() < p0) {
+                    count0++;
+                }
+            }
+            let count1 = currentShots - count0;
+
+            document.getElementById('results-display').classList.remove('hidden');
+            document.getElementById('count-0').textContent = count0 + " (" + Math.round((count0/currentShots)*100) + "%)";
+            document.getElementById('count-1').textContent = count1 + " (" + Math.round((count1/currentShots)*100) + "%)";
+        }
+    </script>
+</body>
+</html>
